@@ -17,7 +17,6 @@ import Axios from "./utils/Axios";
 import GlobalProvider from "./provider/GlobalProvider";
 import CartMobileLink from "./components/CartMobile";
 import AxiosToastError from "./utils/AxiosToastError";
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -59,14 +58,13 @@ function App() {
     fetchCategory();
     fetchSubCategory();
   }, []);
+
   return (
     <GlobalProvider>
       <Header />
-      <PayPalScriptProvider>
-        <main className="min-h-[78vh]">
-          <Outlet />
-        </main>
-      </PayPalScriptProvider>
+      <main className="min-h-[78vh]">
+        <Outlet />
+      </main>
       <Footer />
       <Toaster />
       {location.pathname !== "/checkout" && <CartMobileLink />}
